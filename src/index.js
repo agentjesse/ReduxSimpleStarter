@@ -1,15 +1,11 @@
+//define React and ReactDOM
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
+//create a react component that will produce HTML
+const App = function(){
+  return <div>poop</div>;
+};
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+//put the components html in the page / DOM
+ReactDOM.render(App);
