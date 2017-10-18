@@ -18,24 +18,32 @@ const API_KEY = 'AIzaSyD7PZ1yhWl3KdHG57spUvC2IkP6Z52iEAo';
 class App extends Component {
   //constructor function
   constructor(props) {
+    //make a call to super
     super(props);
+    //set the state
     this.state = {
       videos: [],
       selectedVideo: null,//this will be changed when a video is clicked, see below.
     };
-
-    YTSearch({key: API_KEY, term: 'dogs'}, (data)=> {
+    //run a function named videoSearch in this class component
+    this.videoSearch('cats');
+  }
+  
+  videoSearch(term) {
+    YTSearch({key: API_KEY, term: term}, (data)=> {
       this.setState({
         videos: data,
-        selectedVideo: data[0],
+        selectedVideo: data[0]
       });
     });
-  }
+  }  
 
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar 
+          onSearchTermChange={(term)=> this.videoSearch(term)}
+        />
         <VideoDetail videoElement={this.state.selectedVideo}/>
 
         {/*this callback function passes to video_list then to _item where it receives an argument and calls back to here with it. */}

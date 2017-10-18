@@ -21,12 +21,17 @@ class SearchBar extends React.Component {
 
     //outside of the constructor function MANIPULATE state using this.setState
     return (
-      <div>
+      <div className='search-bar'>
         <input
           value={this.state.term}
-          onChange={ event => this.setState({ term: event.target.value }) } />
+          onChange={ event => this.onInputChange(event.target.value) } />
       </div>
     );
+  }
+
+  onInputChange(term) {
+    this.setState({term: term});
+    this.props.onSearchTermChange(term);
   }
   //define event handler function. Above, put it into the brackets of the onChange jsx attribute of the element. Or write it within the curly brackets if it's short in es6 syntax.
   // //commented out to continue with course.
