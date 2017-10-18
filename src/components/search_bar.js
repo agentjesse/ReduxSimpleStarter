@@ -6,7 +6,7 @@ import React from 'react';
 class SearchBar extends React.Component {
   //State is an object used to record and react to user events, existing on all class-based components (instances). When a component's state changes, it re-renders. First, initialize the state object...
 
-  //the constructor function performs setup inside of a class
+  //the constructor function pperforms setup inside of a class
   constructor(props) {
     //call the parent method (from React.Component) with super
     super(props);
