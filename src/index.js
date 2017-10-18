@@ -1,4 +1,5 @@
 //import libraries
+import _ from 'lodash';
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -39,10 +40,12 @@ class App extends Component {
   }  
 
   render() {
+
     return (
       <div>
+        {/* here 700 is ms that lodash debounce method waits before executing the callback function. used to throttle the many calls fired by changing input of the searchbar. time starts at most recent call.*/}
         <SearchBar 
-          onSearchTermChange={(term)=> this.videoSearch(term)}
+          onSearchTermChange={ _.debounce((term)=>{this.videoSearch(term)}, 700) }
         />
         <VideoDetail videoElement={this.state.selectedVideo}/>
 
